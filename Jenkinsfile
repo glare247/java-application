@@ -21,7 +21,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t amcal/my-java-app:v1 .'
+                sh 'docker build -t glare247/my-java-app:v1 .'
             }
         }
 
@@ -34,7 +34,7 @@ pipeline {
                 )]) {
                     sh '''
                         echo $PASSWORD | docker login -u $USERNAME --password-stdin
-                        docker push amcal/my-java-app:v1
+                        docker push glare247/my-java-app:v1
                         docker logout
                     '''
                 }
