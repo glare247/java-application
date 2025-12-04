@@ -16,7 +16,7 @@ pipeline {
         stage ('RunsonarCloudAnalysis'){
             steps {
                 withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]){
-                    sh 'mvn clean verify sonar:sonar -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=Kabir Bello Dsonar.host.url=https://sonarcloud.io -Dsonar.projectkey=Kabir Bello_my-java-app'
+                    sh 'mvn clean verify sonar:sonar -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=Kabir Bello -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectkey=Kabir Bello_my-java-app'
 
                 }
 
