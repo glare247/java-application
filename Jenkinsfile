@@ -16,7 +16,7 @@ pipeline {
         stage ('RunsonarCloudAnalysis'){
             steps {
                 withCredentials([string(credentialsId: 'SONAR_TOKEN', variable: 'SONAR_TOKEN')]){
-                    sh 'mvn clean verify sonar:sonar -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=glare247-org -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectkey=glare247-org_java-app'
+                    sh 'mvn clean verify sonar:sonar -Dsonar.login=$SONAR_TOKEN -Dsonar.organization=glare247-org -Dsonar.host.url=https://sonarcloud.io -Dsonar.projectKey=glare247-org_my-java-app'
 
                 }
 
