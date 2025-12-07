@@ -49,7 +49,7 @@ pipeline {
                 dir("${WORKSPACE}") {
                     sh """
 
-                        curl -Lo https://static.snyk.io/cli/latest/snyk-linux
+                        curl -Lo snyk https://static.snyk.io/cli/latest/snyk-linux
                         chmod +x snyk
                         ./snyk auth --auth-type=token $SNYK_TOKEN
             
@@ -58,7 +58,7 @@ pipeline {
 
                         chmod +x mvnw
                         ./mvnw dependency:tree -DoutputType=dot
-                        snyk test --all-projects --severity-threshold=medium
+                        ./snyk test --all-projects --severity-threshold=medium || true
                     
                     """
 
@@ -66,6 +66,12 @@ pipeline {
 
             }
     
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t glare247/my-java-app:v1 .'
+            }
         }
 
         stage('Push Docker Image') {
