@@ -68,11 +68,7 @@ pipeline {
     
         }
 
-        stage('Build Docker Image') {
-            steps {
-                sh 'docker build -t glare247/my-java-app:v1 .'
-            }
-        }
+        
 
         stage('Push Docker Image') {
             steps {
